@@ -1,0 +1,45 @@
+topology:
+  simulation-time: 3600
+  scenario: rural
+  base-stations:
+    sectors: 3
+    positions:
+      gnb1:
+        x: 300
+        y: 273
+      gnb2:
+        x: 500
+        y: 273
+      gnb3:
+        x: 200
+        y: 446 
+      gnb40:
+        x: 400
+        y: 446 
+      gnb5:
+        x: 600
+        y: 446 
+      gnb6:
+        x: 300
+        y: 619 
+      gnb7:
+        x: 500
+        y: 619 
+    x2:
+      - all-all
+  users:
+    users-per-bs: 30
+    user-to-bs-dist: 100
+  background:
+    base-stations:
+      number: 10
+      min-x:  10
+      max-x:  1000
+      min-y:  10
+      max-y:  1000
+    users:
+      number: 100
+      min-x:  10
+      max-x:  1000
+      min-y:  10
+      max-y:  1000
