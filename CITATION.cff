@@ -2,16 +2,7 @@ abstract: Files regarding the paper Calibration and Automation of a 5G Simulator
 authors:
   - family-names: Boeira
     given-names: Conrado
-- family-names: Hasan
-    given-names: Kazi
-- family-names: Papry
-    given-names: Khaleda
-- family-names: Ju
-    given-names: Yue
-- family-names: Zhu
-    given-names: Zhongwen
-- family-names: Haque
-    given-names: Israat
+    orcid: "https://orcid.org/0000-0002-6519-9001"
 cff-version: 1.2.0
 date-released: "2024-01-29"
 identifiers:
