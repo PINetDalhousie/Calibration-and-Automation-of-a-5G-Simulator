@@ -17,3 +17,9 @@ def setup_folders(project_name, scenario):
     elif(scenario.lower() == "rural"):
         os.remove(folder_path+"/urban.ini")
         os.rename(folder_path+"/rural.ini",folder_path+"/omnetpp.ini")
+
+def set_kpis(kpi_config):
+    configs = []
+    for entry in kpi_config:
+        configs.append("**.{}:vector.vector-recording = true\n".format(entry))
+    return configs

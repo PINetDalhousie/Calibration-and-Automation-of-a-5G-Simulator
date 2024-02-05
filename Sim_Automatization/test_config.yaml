@@ -1,6 +1,9 @@
 topology:
   simulation-time: 3600
   scenario: rural
+  kpis:
+    - servingSINR
+    - servingCouplingGain
   base-stations:
     sectors: 3
     positions:

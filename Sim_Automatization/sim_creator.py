@@ -38,10 +38,15 @@ def set_topology(topo_conf,scenario,args):
     bs_conf = topo_conf["base-stations"]
     ue_conf = topo_conf["users"]
     bg_conf = topo_conf["background"]
+    kpi_conf = topo_conf["kpis"]
 
     # Write simulation time
     time_config = scenario_parser.set_time(sim_time)
     write_conf("./{}/omnetpp.ini".format(args.output_directory), "*time config", time_config)
+
+    # Configure KPIs
+    kpi_config = scenario_parser.set_kpis(kpi_conf)
+    write_conf("./{}/omnetpp.ini".format(args.output_directory), "*kpi config", kpi_config)
 
     # parse base stations sectors 
     parsed_bs_conf, sectors_config = base_station_parser.set_sectors(bs_conf)
