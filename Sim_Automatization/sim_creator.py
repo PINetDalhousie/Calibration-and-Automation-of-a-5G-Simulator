@@ -2,7 +2,7 @@ import yaml
 import sys
 import shutil
 import os
-import argparse
+import argparse 
 import scenario_parser
 import base_station_parser
 import background_parser
@@ -37,7 +37,7 @@ def set_topology(topo_conf,scenario,args):
     sim_time = topo_conf["simulation-time"]
     bs_conf = topo_conf["base-stations"]
     ue_conf = topo_conf["users"]
-    bg_conf = topo_conf["background"]
+    if("background" in topo_conf): bg_conf = topo_conf["background"]
     kpi_conf = topo_conf["kpis"]
 
     # Write simulation time
@@ -53,8 +53,9 @@ def set_topology(topo_conf,scenario,args):
     write_conf("./{}/omnetpp.ini".format(args.output_directory), "*sectors direction", sectors_config)
 
     # parse base stations positions
-    bs_pos_conf = base_station_parser.set_positions_bs(parsed_bs_conf)
-    write_conf("./{}/Network.ned".format(args.output_directory), "*gnb location", bs_pos_conf)
+    bs_pos_conf_ini, bs_pos_conf_ned = base_station_parser.set_positions_bs(parsed_bs_conf)
+    write_conf("./{}/omnetpp.ini".format(args.output_directory), "*gnb location", bs_pos_conf_ini)
+    write_conf("./{}/Network.ned".format(args.output_directory), "*gnb location", bs_pos_conf_ned)
 
     # parse x2 config
     x2_ini_conf, x2_ned_conf = base_station_parser.set_x2(parsed_bs_conf)
@@ -66,9 +67,10 @@ def set_topology(topo_conf,scenario,args):
     write_conf("./{}/omnetpp.ini".format(args.output_directory), "*ue location", ue_pos_conf)
 
     # parse background config
-    bg_bs_conf, bg_ue_conf = background_parser.set_bg(bg_conf)
-    write_conf("./{}/omnetpp.ini".format(args.output_directory), "*bg bs configuration", bg_bs_conf)
-    write_conf("./{}/omnetpp.ini".format(args.output_directory), "*bg ue configuration", bg_ue_conf)
+    if("background" in topo_conf): 
+        bg_bs_conf, bg_ue_conf = background_parser.set_bg(bg_conf)
+        write_conf("./{}/omnetpp.ini".format(args.output_directory), "*bg bs configuration", bg_bs_conf)
+        write_conf("./{}/omnetpp.ini".format(args.output_directory), "*bg ue configuration", bg_ue_conf)
 
 def main():
     args = parse_arguments()

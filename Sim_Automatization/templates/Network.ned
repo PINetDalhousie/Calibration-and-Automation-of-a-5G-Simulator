@@ -13,7 +13,7 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package simu5g.simulations.Custom.calibration_v2;
+package simu5g.simulations.Custom.demo;
 
 import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
 import inet.networklayer.ipv4.RoutingTableRecorder;
@@ -64,7 +64,7 @@ network Network
             @display("p=30,30");
         }
 
-        ### *gnb location configuration 
+        //### *gnb location configuration 
         
 
         ue[numUe]: NRUe {
@@ -85,7 +85,7 @@ network Network
         iUpf.pppg++ <--> Eth10G <--> gnb1.ppp;
 		
         //# X2 connections 
-        ### *x2 configuration 
+        //### *x2 configuration 
           
 
 }

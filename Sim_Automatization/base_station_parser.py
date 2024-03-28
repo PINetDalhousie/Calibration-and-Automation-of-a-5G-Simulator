@@ -1,14 +1,19 @@
 
 def set_positions_bs(bs_conf):
-    configs = []
+    ini_configs = []
+    ned_configs = []
     for bs in bs_conf["positions"]:
         bs_x = bs_conf["positions"][bs]["x"]
         bs_y = bs_conf["positions"][bs]["y"]
-        configs.append('        {}: gNodeB {{\n'.format(bs))
-        configs.append('            @display("p={},{};is=vl");\n'.format(bs_x,bs_y))
-        configs.append('        }\n')
-        configs.append('\n')
-    return configs
+        ned_configs.append('        {}: gNodeB {{\n'.format(bs))
+        ned_configs.append('            @display("p={},{};is=vl");\n'.format(bs_x,bs_y))
+        ned_configs.append('        }\n')
+        ned_configs.append('\n')
+
+        ini_configs.append("*.{}.mobility.initialX = {}m\n".format(bs,bs_x))
+        ini_configs.append("*.{}.mobility.initialY = {}m\n".format(bs,bs_y))
+        ini_configs.append("\n")
+    return (ini_configs, ned_configs)
 
 def sectors_parse_bs(bs_conf,num_sectors):
     bss = bs_conf["positions"]
